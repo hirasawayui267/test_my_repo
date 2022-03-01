@@ -1,8 +1,9 @@
+version: 0.0
 resources:
   - name-of-function-to-deploy:
       type: "AWS::Lambda::Function"
       properties:
         name: "costack-auto-test"
         alias: "alias-of-lambda-function-to-deploy"
-        currentversion: 0
-        targetversion: 1
+        currentversion: "0"
+        targetversion: "1"
