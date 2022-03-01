@@ -6,7 +6,6 @@ env:
   # there is no parameter store
   # parameter-store:
   #   LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
-
 phases:
   install:
     commands:
@@ -31,3 +30,5 @@ phases:
     commands:
       - echo Entered the post_build phase...
       - echo Build completed on `date`
+      # deploy to lambda
+      - sh build.sh
