@@ -1,12 +1,8 @@
-version: 0.0
-Resources:
-  - myLambdaFunction:
-      Type: AWS::Lambda::Function
-      Properties:
-        Name: "costack-auto-test"
-        Alias: "myLambdaFunctionAlias"
-        CurrentVersion: "1"
-        TargetVersion: "2"
-Hooks:
-  - BeforeAllowTraffic: "LambdaFunctionToValidateBeforeTrafficShift"
-  - AfterAllowTraffic: "LambdaFunctionToValidateAfterTrafficShift"
+resources:
+  - name-of-function-to-deploy:
+      type: "AWS::Lambda::Function"
+      properties:
+        name: "costack-auto-test"
+        alias: "alias-of-lambda-function-to-deploy"
+        currentversion: 0
+        targetversion: 1
