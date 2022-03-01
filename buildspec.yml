@@ -35,5 +35,4 @@ phases:
 artifacts:
   files:
     - src/*
-    - appspec.yml
-  name: artifact-$(date +%Y-%m-%d)
+    - appspec.yaml
