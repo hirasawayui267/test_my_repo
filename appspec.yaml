@@ -1,4 +1,7 @@
 version: 0.0
+files:
+  - source: /
+    destination: /
 resources:
   - name-of-function-to-deploy:
       type: "AWS::Lambda::Function"
@@ -7,3 +10,6 @@ resources:
         alias: "alias-of-lambda-function-to-deploy"
         currentversion: "0"
         targetversion: "1"
+Hooks:
+  - BeforeAllowTraffic: "costack-auto-test"
+  - AfterAllowTraffic: "costack-auto-test"
