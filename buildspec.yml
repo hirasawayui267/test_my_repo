@@ -34,4 +34,4 @@ phases:
       - sh build.sh
 artifacts:
   files:
-    - **/*
+    - '**/*'
