@@ -17,12 +17,16 @@ phases:
   pre_build:
     commands:
       - echo Entered the pre_build phase...
+      - echo going to unzip the code, expecting code.zip, show the build folder
+      - ls
+      - unzip code.zip
     finally:
       - echo This always runs even if the login command fails
   build:
     commands:
       - echo Entered the build phase...
       - echo Build started on `date`
+      - sh build.sh
       # intall the python files
     finally:
       - echo This always runs even if the install command fails
@@ -31,7 +35,7 @@ phases:
       - echo Entered the post_build phase...
       - echo Build completed on `date`
       # deploy to lambda
-      - sh build.sh
+      - echo upload the virtual environment and publish a new version of lambda 
 artifacts:
   files:
     - '**/*'
