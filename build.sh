@@ -15,19 +15,19 @@ if [ -f "requirements.txt" ]; then
     python3.8 -m pip install -r requirements.txt
     deactivate
 
-    mkdir pythont
-    cd pythont
+    mkdir python
+    cd python
     mkdir lib
     cd ..
-    cp -r entropy-env/lib/python3.8 pythont/lib/
+    cp -r entropy-env/lib/python3.8 python/lib/
     ls
-    zip -r layer.zip pythont &>/dev/null
+    sudo zip -r layer.zip python &>/dev/null
     ls
     echo "zipped env"
     # clean up the folder end
     echo "clean up the folder, remove entropy-env and python zip folder"
     rm -r entropy-env
-    rm -r pythont
+    rm -r python
     echo "publish layer version..."
     # should actually use the project resource id to construct the layers
     # should link the layer with the function
