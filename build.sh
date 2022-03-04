@@ -14,10 +14,14 @@ if [ -f "requirements.txt" ]; then
     . entropy-env/bin/activate
     python3.8 -m pip install -r requirements.txt
     deactivate
-    mkdir python && cd python
-    mkdir lib && cd ..
+    mkdir python
+    cd python
+    mkdir lib
+    cd ..
     cp -r entropy-env/lib/python3.8 python/lib/
+    ls
     zip -r layer.zip python &>/dev/null
+    ls
     echo "zipped env"
     # clean up the folder end
     echo "clean up the folder, remove entropy-env and python zip folder"
