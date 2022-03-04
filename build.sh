@@ -20,7 +20,8 @@ if [ -f "requirements.txt" ]; then
     mkdir lib
     cd ..
     cp -r entropy-env/lib/python3.8 python/lib/
-    ls
+    echo "show env files..."
+    ls -l
     zip -r layer.zip python
     ls
     echo "zipped env"
@@ -34,7 +35,10 @@ if [ -f "requirements.txt" ]; then
     export SHOULD_PUBLISH_LAYER=1
 fi
 
-zip -r deployment.zip src &>/dev/null
+# do not include the src folder
+cd src
+zip -r ../deployment.zip * &>/dev/null
+cd ..
 # deploy the deployment file and upload to aws
 # the following should be done by python scripts for convenience
 
