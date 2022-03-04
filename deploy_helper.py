@@ -12,10 +12,10 @@ def publish_layer_and_update_function_config():
     # simply publish the function
     print("update function code")
     result = subprocess.run([f"aws lambda update-function-code --function-name {function_name} --zip-file fileb://deployment.zip"], stdout=subprocess.STDOUT, shell=True)
-    print("update function code result")
+    print("update function code result", result)
 
-    print("publishing built layer...")
     if should_publish_layer:
+        print("publishing built layer...")
         result = subprocess.run([f"""aws lambda publish-layer-version --layer-name {layer_name} --compatible-architectures x86_64 --zip-file fileb://layer.zip --compatible-runtimes python3.8"""],stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
         # result = subprocess.run([f"""aws lambda publish-layer-version --layer-name {layer_name} --content S3Bucket=costack-layers,S3Key={function_id}/deployment.zip --compatible-architectures x86_64 --compatible-runtimes python3.8"""],stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
         print(result)

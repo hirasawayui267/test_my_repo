@@ -39,6 +39,8 @@ fi
 cd src
 zip -r ../deployment.zip * &>/dev/null
 cd ..
+echo "zipped code folder,run ls"
+ls
 # deploy the deployment file and upload to aws
 # the following should be done by python scripts for convenience
 
