@@ -21,7 +21,7 @@ if [ -f "requirements.txt" ]; then
     cd ..
     cp -r entropy-env/lib/python3.8 python/lib/
     ls
-    sudo zip -r layer.zip python &>/dev/null
+    zip -r layer.zip python
     ls
     echo "zipped env"
     # clean up the folder end
