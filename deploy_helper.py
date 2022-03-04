@@ -11,7 +11,7 @@ print("env vars ,", layer_name, should_publish_layer, function_name)
 def publish_layer_and_update_function_config():
     # simply publish the function
     print("update function code")
-    result = subprocess.run([f"aws lambda update-function-code --function-name {function_name} --zip-file fileb://deployment.zip"], stdout=subprocess.STDOUT, shell=True)
+    result = subprocess.run([f"aws lambda update-function-code --function-name {function_name} --zip-file fileb://deployment.zip"], stdout=subprocess.PIPE, shell=True)
     print("update function code result", result)
 
     if should_publish_layer:
