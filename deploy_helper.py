@@ -2,13 +2,18 @@
 import subprocess
 import os
 import json
-# there should only be one layer 
+# there should only be one layer
 layer_name = os.environ.get('LAYER_NAME')
 should_publish_layer = os.environ.get('SHOULD_PUBLISH_LAYER')
 function_name = os.environ.get('FUNCTION_NAME')
 
 print("env vars ,", layer_name, should_publish_layer, function_name)
 def publish_layer_and_update_function_config():
+    # simply publish the function
+    print("update function code")
+    result = subprocess.run([f"aws lambda update-function-code --function-name {function_name} --zip-file fileb://deployment.zip"], stdout=subprocess.STDOUT, shell=True)
+    print("update function code result")
+
     print("publishing built layer...")
     if should_publish_layer:
         result = subprocess.run([f"""aws lambda publish-layer-version --layer-name {layer_name} --compatible-architectures x86_64 --zip-file fileb://layer.zip --compatible-runtimes python3.8"""],stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
@@ -26,9 +31,9 @@ def publish_layer_and_update_function_config():
         result = subprocess.run([f"aws lambda update-function-configuration --function-name {function_name} --layers {layer_version_arn}"], stdout=subprocess.PIPE, shell=True)
         result = result.stdout.decode('utf-8')
         print("update funciton configuration result: ",result)
-    else:
-        # simply publish the function
-        result = subprocess.run([f"aws lambda update-function-configuration --function-name {function_name}"], stdout=subprocess.PIPE, shell=True)
+
+
+
 
 if __name__ == "__main__":
     publish_layer_and_update_function_config()
