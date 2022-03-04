@@ -19,7 +19,10 @@ phases:
       - echo Entered the pre_build phase...
       - echo going to unzip the code, expecting code.zip, show the build folder
       - ls
-      - unzip code.zip
+      - echo there should be only one folder, navigate to it
+      - cd *
+      - echo show github folder structure
+      - ls 
     finally:
       - echo This always runs even if the login command fails
   build:
