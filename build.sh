@@ -4,7 +4,7 @@
 # build the handlers for the functions
 # deploy my lambda with the handlers
 # zip the entire folder and deploy to lambda?
-# build the layers
+# build the layers...
 if [ -f "requirements.txt" ]; then
     echo "detect requirements.txt."
     echo "automatically build layer"
