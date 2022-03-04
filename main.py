@@ -6,4 +6,5 @@ def test_main(event, context):
     if type(event)==str:
         event = json.loads(event)
     # this is to make a new change
+    # update the code in the main function 
     return {"response": "this is my entropy function" }
