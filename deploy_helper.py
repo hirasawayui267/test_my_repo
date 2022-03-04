@@ -2,6 +2,7 @@
 import subprocess
 import os
 import json
+# there should only be one layer
 layer_name = os.environ.get('LAYER_NAME')
 should_publish_layer = os.environ.get('SHOULD_PUBLISH_LAYER')
 function_name = os.environ.get('FUNCTION_NAME')
@@ -21,6 +22,7 @@ def publish_layer_and_update_function_config():
 
         # update the configuration of the function
         print("updating funciton configuration with the new layer")
+        # need to know the names of the functions --> function_name, handler
         result = subprocess.run([f"aws lambda update-function-configuration --function-name {function_name} --layers {layer_version_arn}"], stdout=subprocess.PIPE, shell=True)
         result = result.stdout.decode('utf-8')
         print("update funciton configuration result: ",result)
