@@ -2,7 +2,7 @@
 import subprocess
 import os
 import json
-# there should only be one layer
+# there should only be one layer 
 layer_name = os.environ.get('LAYER_NAME')
 should_publish_layer = os.environ.get('SHOULD_PUBLISH_LAYER')
 function_name = os.environ.get('FUNCTION_NAME')
