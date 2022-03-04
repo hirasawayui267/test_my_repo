@@ -25,7 +25,7 @@ if [ -f "requirements.txt" ]; then
     rm -r python
     echo "publish layer version..."
     # should actually use the project resource id to construct the layers
-    aws lambda publish-layer-version --layer-name $FUNCTION_NAME --compatible-architectures x86_64 --zip-file fileb://layer.zip --compatible-runtimes python3.8
+    aws lambda publish-layer-version --layer-name $LAYER_NAME --compatible-architectures x86_64 --zip-file fileb://layer.zip --compatible-runtimes python3.8
 fi
 
 zip -r deployment.zip src &>/dev/null
