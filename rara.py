@@ -6,5 +6,5 @@ def ra_main(event, context):
     if type(event)==str:
         event = json.loads(event)
     # this is to make a new change
-    # haha 1
+    # haha 2
     return {"response": "this is my entropy function" }
